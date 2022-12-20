@@ -2,6 +2,7 @@ import math
 import random
 import time
 
+a = 1
 
 def select():
     mode = input("Training, Test or back to mode selection? \ntr or te or B: \n - ")
