@@ -1,5 +1,6 @@
-import pygame, sys
-import Player
+import pygame
+import sys
+import Game
 
 
 def main():
@@ -7,7 +8,7 @@ def main():
 
     running = True
 
-    CurrentPlayer = Player.Player("XXX", 100, 50, 0, 400, 304)
+    CurrentGame = Game.Game()
 
     while running:
 
@@ -19,14 +20,7 @@ def main():
 
             # Player Movement
             if event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_RIGHT:
-                    CurrentPlayer.X += 16
-                if event.key == pygame.K_LEFT:
-                    CurrentPlayer.X -= 16
-                if event.key == pygame.K_DOWN:
-                    CurrentPlayer.Y += 16
-                if event.key == pygame.K_UP:
-                    CurrentPlayer.Y -= 16
+                CurrentGame.player_movement(event.key)
 
 
 if __name__ == "main":
