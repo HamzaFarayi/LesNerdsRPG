@@ -9,25 +9,31 @@ class region:
 
 
   def DrawLines(self, screen):
-    for a in range(37):
+    for a in range(50):
+      pygame.draw.line(screen, self.lineColor, (16*(a+1), 0), (16*(a+1), 608), 1)
+      LineList = []
+      for b in range(38):
+        LineList.append("-")
+
+      BlockList.append(LineList)
+
+    for b in range(37):
       pygame.draw.line(screen, self.lineColor, (0, 16*(a+1)), (800, 16*(a+1)), 1)
-      horizontalLineList = []
-      for b in range(50):
-        horizontalLineList.append("-")
-
-    for b in range(50):
-      pygame.draw.line(screen, self.lineColor, (16*(b+1), 0), (16*(b+1), 608), 1)
-
-      BlockList.append(horizontalLineList)
 
 
-  def CheckBlock(self, screen, CurrentRegion):
-    for x in range(37):
-      for y in range(50):
-        if CurrentRegion = Wind:
-          if BlockList[x][y] == "-":
-            pygame.draw.rect(screen, skyblue, []
-      
+  def CheckBlock(self, screen):
+    for x in range(50):
+      for y in range(38):
+        Block = BlockList[x][y]
+        if self == Wind:
+          if Block == "-":
+            pygame.draw.rect(screen, skyBlue, [16*x+ 0.2, 16*y+ 0.2, 15.6, 15.6])
+
+          elif Block == "road":
+            pygame.draw.rect(screen, white, [16*x+ 0.2, 16*y+ 0.2, 15.6, 15.6])
+
+          elif Block == "side":
+            pygame.draw.circle(screen, white, (16*x+8, 16*y+8), 7.9)
 
 #Wind region
 skyBlue = (137, 189, 222)
