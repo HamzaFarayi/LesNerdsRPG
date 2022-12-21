@@ -4,6 +4,7 @@ import Game
 
 pygame.display.set_caption("Les Nerds RPG")
 
+
 def main():
     pygame.init()
 
