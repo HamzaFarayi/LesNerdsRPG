@@ -1,6 +1,7 @@
 import pygame, sys
 import Player
 
+pygame.display.set_caption("Les Nerds RPG")
 
 def main():
     pygame.init()
