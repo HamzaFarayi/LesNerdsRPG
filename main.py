@@ -1,2 +1,2 @@
-import pygame
-import sys
+class Screen:
+  a = 1
