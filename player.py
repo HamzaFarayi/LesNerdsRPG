@@ -1,5 +1,3 @@
-import pygame
-
 
 class Player:
     def __init__(self, name, health, gold, experience, x, y):
@@ -10,3 +8,7 @@ class Player:
         self.X = x
         self.Y = y
 
+        self.moving_right = False
+        self.moving_left = False
+        self.moving_down = False
+        self.moving_up = False
