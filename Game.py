@@ -1,4 +1,4 @@
-from Player import *
+import Player
 import pygame
 
 

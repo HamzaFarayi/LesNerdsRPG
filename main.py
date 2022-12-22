@@ -1,30 +1,54 @@
 import pygame
 import sys
-from Game import *
+import Game
+from config import *
 
 pygame.display.set_caption("Les Nerds RPG")
 
+class Start():
+    
+    def __init__(self):
+        pygame.init()
+        self.screen = pygame.display.set_mode((WIN_WIDTH, WIN_HEIGHT))
+        self.clock = pygame.time.Clock()
+        self.running = True
+        self.playing = True
 
-def main():
-    pygame.init()
 
-    running = True
 
-    CurrentGame = Game.Game()
 
-    while running:
+    def events(self):
 
+        CurrentGame = Game.Game()
+        
+        
         for event in pygame.event.get():
-            # Quit event
             if event.type == pygame.QUIT:
-                pygame.quit()
-                sys.exit()
+                self.playing = False
+                self.running = False
 
-            # Player Movement
             if event.type == pygame.KEYDOWN:
                 CurrentGame.player_movement(event.key)
 
 
-if __name__ == "main":
-    main()
+    def draw(self):
+        self.screen.fill('black')
 
+
+    def main(self):
+
+        
+        while self.playing:
+            self.events()
+            self.draw()
+
+
+
+
+start = Start()
+
+while start.running:
+    start.main()
+
+pygame.quit()
+sys.exit()
