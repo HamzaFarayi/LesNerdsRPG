@@ -24,7 +24,7 @@ class region:
   def CheckBlock(self, screen, CurrentRegion):
     for x in range(37):
       for y in range(50):
-        if CurrentRegion = Wind:
+        if CurrentRegion == Wind:
           if BlockList[x][y] == "-":
             pygame.draw.rect(screen, skyblue, []
       
