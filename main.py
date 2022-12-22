@@ -58,7 +58,6 @@ class Start:
 
     def draw(self):
         self.screen.fill("black")
-
         self.Draw.draw_lines()
 
         self.Draw.draw_player(self.player.X, self.player.Y)
@@ -73,7 +72,7 @@ class Start:
             self.player_movement()
             self.draw()
 
-            self.clock.tick(10)
+            self.clock.tick(4)
 
 
 start = Start()

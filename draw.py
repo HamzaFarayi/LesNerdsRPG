@@ -23,6 +23,9 @@ class Draw:
 
         pygame.draw.rect(self.screen, color, rect)
 
+        #image = pygame.image.load("resources/graphics/player/img.png")
+        #image = pygame.transform.scale(image, [32, 32])
+        #self.screen.blit(image, rect)
 
 
 
