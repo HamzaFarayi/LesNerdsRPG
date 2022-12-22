@@ -1,6 +1,6 @@
 import pygame
   
-lineList = []
+lineList = [] #tile[x][y] represents the tile at (x, y)
 
 class line:
   def drawLine(screen, currentRegion):
