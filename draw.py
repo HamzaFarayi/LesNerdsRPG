@@ -17,15 +17,14 @@ class Draw:
         for y in range(19):
             pygame.draw.line(self.screen, (255, 255, 255), (0, y*32), (width, y*32))
 
-    def draw_player(self, x, y):
+    def draw_player(self, x, y, image):
         color = (255, 0, 0)
         rect = pygame.rect.Rect(x, y, 32, 32)
 
-        pygame.draw.rect(self.screen, color, rect)
+        #pygame.draw.rect(self.screen, color, rect)
 
-        #image = pygame.image.load("resources/graphics/player/img.png")
         #image = pygame.transform.scale(image, [32, 32])
-        #self.screen.blit(image, rect)
+        self.screen.blit(image, rect)
 
 
 

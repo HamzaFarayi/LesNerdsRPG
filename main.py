@@ -2,6 +2,7 @@ import pygame
 import sys
 import player
 import draw
+import sprite
 from config import *
 
 pygame.display.set_caption("Les Nerds RPG")
@@ -18,6 +19,7 @@ class Start:
 
         self.player = player.Player("XXX", 100, 50, 0, 384, 320)
         self.Draw = draw.Draw(self.screen)
+        self.Sprite = sprite.Sprite()
 
     def events(self):
 
@@ -28,39 +30,56 @@ class Start:
 
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_RIGHT:
-                    self.player.moving_right = True
+                    self.player.horizontal_direction = "right"
+
                 if event.key == pygame.K_LEFT:
-                    self.player.moving_left = True
+                    self.player.horizontal_direction = "left"
+
                 if event.key == pygame.K_DOWN:
-                    self.player.moving_down = True
+                    self.player.vertical_direction = "down"
+
                 if event.key == pygame.K_UP:
-                    self.player.moving_up = True
+                    self.player.vertical_direction = "up"
 
             if event.type == pygame.KEYUP:
-                if event.key == pygame.K_RIGHT:
-                    self.player.moving_right = False
-                if event.key == pygame.K_LEFT:
-                    self.player.moving_left = False
-                if event.key == pygame.K_DOWN:
-                    self.player.moving_down = False
-                if event.key == pygame.K_UP:
-                    self.player.moving_up = False
+                if event.key == pygame.K_RIGHT or event.key == pygame.K_LEFT:
+                    self.player.horizontal_direction = None
+
+                if event.key == pygame.K_DOWN or event.key == pygame.K_UP:
+                    self.player.vertical_direction = None
+
+                if self.player.horizontal_direction is None and self.player.vertical_direction is None:
+                    self.player.sprite_index = 0
 
     def player_movement(self):
-        if self.player.moving_right:
+        if self.player.horizontal_direction is None and self.player.vertical_direction is None:
+            return
+
+        if self.player.horizontal_direction == "right":
             self.player.X += 32
-        if self.player.moving_left:
+
+        if self.player.horizontal_direction == "left":
             self.player.X -= 32
-        if self.player.moving_down:
+
+        if self.player.vertical_direction == "down":
             self.player.Y += 32
-        if self.player.moving_up:
+
+        if self.player.vertical_direction == "up":
             self.player.Y -= 32
+
+        # Update index
+        self.player.sprite_index += 1
+        self.player.sprite_index = self.player.sprite_index % 8
 
     def draw(self):
         self.screen.fill("black")
+
         self.Draw.draw_lines()
 
-        self.Draw.draw_player(self.player.X, self.player.Y)
+        sprite = self.Sprite.return_sprite(self.player.sprite_index, self.player.horizontal_direction,
+                                           self.player.vertical_direction)
+
+        self.Draw.draw_player(self.player.X, self.player.Y, sprite)
 
         pygame.display.flip()
 

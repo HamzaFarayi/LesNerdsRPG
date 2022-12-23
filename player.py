@@ -8,7 +8,7 @@ class Player:
         self.X = x
         self.Y = y
 
-        self.moving_right = False
-        self.moving_left = False
-        self.moving_down = False
-        self.moving_up = False
+        self.sprite_index = 0
+
+        self.horizontal_direction = None
+        self.vertical_direction = None
