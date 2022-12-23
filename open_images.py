@@ -38,7 +38,9 @@ i14 = image("", "images/soil_corner.png", 416, 0)
 i15 = image("", "images/soil_corner_2.png", 448, 0)
 i16 = image("", "images/soil_side.png", 480, 0)
 i17 = image("", "images/soil_side_2.png", 512, 0)
-images = (i1, i2, i3, i4, i5, i6, i7, i8, i9, i10, i11, i12, i13, i14, i15, i16, i17)
+i18 = image("", "images/water.png", 544, 0)
+i19 = image("", "images/water_2.png", 576, 0)
+images = (i1, i2, i3, i4, i5, i6, i7, i8, i9, i10, i11, i12, i13, i14, i15, i16, i17, i18, i19)
 
 for a in images:
     a.loadImage()
