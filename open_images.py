@@ -1,4 +1,5 @@
 import pygame
+
 pygame.init()
 
 SX = 640
@@ -6,6 +7,7 @@ SY = 640
 
 screen = pygame.display.set_mode((SX, SY))
 screen.fill((30, 200, 100))
+
 
 class image:
     def __init__(self, Image, load, x, y):
@@ -17,6 +19,7 @@ class image:
     def loadImage(self):
         a = pygame.image.load(self.load)
         self.Image = pygame.transform.scale(a, (32, 32))
+
 
 i1 = image("", "images/cloud.png", 0, 0)
 i2 = image("", "images/cloud_around_outside.png", 32, 0)
@@ -41,10 +44,9 @@ for a in images:
     a.loadImage()
     screen.blit(a.Image, (a.x, a.y))
 
-
 for x in range(20):
-    pygame.draw.line(screen, (255,255, 255), (32*x-0.5, 0), (32*x-0.5, 640))
-    pygame.draw.line(screen, (255, 255, 255), (0, 32*x-0.5), (640, 32*x-0.5))
+    pygame.draw.line(screen, (255, 255, 255), (32 * x - 0.5, 0), (32 * x - 0.5, 640))
+    pygame.draw.line(screen, (255, 255, 255), (0, 32 * x - 0.5), (640, 32 * x - 0.5))
 
 Run = True
 while Run:
@@ -55,4 +57,3 @@ while Run:
     pygame.display.update()
 
 pygame.quit()
-
