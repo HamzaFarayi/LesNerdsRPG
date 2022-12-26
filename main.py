@@ -105,18 +105,15 @@ vid.set_size((800, 608))
 def intro():
     while True:
         vid.draw(SCREEN, (0, 0))
-        pygame.display.update()
 
         for event in pygame.event.get():
-            if event.type == pygame.K_RETURN:
-                vid.close()
-                while start.running:
-                    start.main()
+            if event.type == 768:
+                if event.key == pygame.K_RETURN:
+                    vid.close()
+                    while start.running:
+                        start.main()
 
-            if event.type == pygame.QUIT:
-                vid.close()
-                pygame.quit()
-                sys.exit()
+        pygame.display.update()
 
 
 def play():
@@ -185,8 +182,9 @@ def main_menu():
         for button in [PLAY_BUTTON, OPTIONS_BUTTON, QUIT_BUTTON]:
             button.changeColor(MENU_MOUSE_POS)
             button.update(SCREEN)
-        
+
         for event in pygame.event.get():
+
             if event.type == pygame.QUIT:
                 pygame.quit()
                 sys.exit()

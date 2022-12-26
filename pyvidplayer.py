@@ -68,9 +68,10 @@ class Video:
     def toggle_pause(self):
         self._video.toggle_pause()
         
-    def _update(self): 
+    def _update(self):
+
         updated = False
-        
+
         if self._frame_num + 1 == self.frame_count:
             self.active = False 
             return False
