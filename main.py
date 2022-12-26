@@ -113,6 +113,10 @@ def intro():
                     while start.running:
                         start.main()
 
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                sys.exit()
+
         pygame.display.update()
 
 
