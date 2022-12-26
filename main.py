@@ -5,6 +5,7 @@ import draw
 import sprite
 from button import Button
 from config import *
+from pyvidplayer import Video
 
 BG = pygame.image.load("images/Background.jpg")
 pygame.display.set_caption("Les Nerds RPG")
@@ -105,13 +106,25 @@ class Start:
 
             self.clock.tick(4)
 
+vid = Video("resources/video/intro.mp4")
+vid.set_size((800, 608))
+
+def intro():
+    while True:
+        vid.draw(SCREEN, (0, 0))
+        pygame.display.update()
+        for event in pygame.event.get():
+            if event.type == pygame.K_RETURN:
+                vid.close()
+                while start.running:
+                    start.main()
+
 
 def play():
     while True:
         PLAY_MOUSE_POS = pygame.mouse.get_pos()
-
-        while start.running:
-            start.main()
+        PLAY_BACK = Button(image=None, pos=(640, 460), 
+                            text_input="BACK", font=get_font(75), base_color="White", hovering_color="Green")
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 pygame.quit()
@@ -121,6 +134,8 @@ def play():
                     main_menu()
 
         pygame.display.update()
+
+        intro()
 
 def options():
     while True:
