@@ -10,7 +10,9 @@ from pyvidplayer import Video
 BG = pygame.image.load("images/Background.jpg")
 pygame.display.set_caption("Les Nerds RPG")
 SCREEN = pygame.display.set_mode((800, 608))
+programIcon = pygame.image.load('resources/graphics/icon.png')
 
+pygame.display.set_icon(programIcon)
 
 class Start:
     
