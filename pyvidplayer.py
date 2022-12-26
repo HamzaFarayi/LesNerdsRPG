@@ -80,7 +80,7 @@ class Video:
             self._frame_num += 1
             
             if frame != None:
-                size =  frame[0].get_size()
+                size = frame[0].get_size()
                 img = pygame.image.frombuffer(frame[0].to_bytearray()[0], size, "RGB")
                 if size != self.current_size:
                     img = self.alt_resize(img, self.current_size)

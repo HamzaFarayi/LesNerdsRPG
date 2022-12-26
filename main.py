@@ -10,10 +10,6 @@ from pyvidplayer import Video
 BG = pygame.image.load("images/Background.jpg")
 pygame.display.set_caption("Les Nerds RPG")
 SCREEN = pygame.display.set_mode((800, 608))
-def get_font(size): # Returns Press-Start-2P in the desired size
-    return pygame.font.Font("resources/fonts/font.ttf", size)
-
-
 
 
 class Start:
@@ -24,7 +20,6 @@ class Start:
         self.clock = pygame.time.Clock()
         self.running = True
         self.playing = True
-
 
         self.player = player.Player("XXX", 100, 50, 0, 384, 320)
         self.Draw = draw.Draw(self.screen)
@@ -60,8 +55,6 @@ class Start:
                 if self.player.horizontal_direction is None and self.player.vertical_direction is None:
                     self.player.sprite_index = 0
 
-
-
     def player_movement(self):
         if self.player.horizontal_direction is None and self.player.vertical_direction is None:
             return
@@ -81,8 +74,6 @@ class Start:
         # Update index
         self.player.sprite_index += 1
         self.player.sprite_index = self.player.sprite_index % 8
-
-
 
     def draw(self):
         self.screen.fill("black")
@@ -106,18 +97,26 @@ class Start:
 
             self.clock.tick(4)
 
+
 vid = Video("resources/video/intro.mp4")
 vid.set_size((800, 608))
+
 
 def intro():
     while True:
         vid.draw(SCREEN, (0, 0))
         pygame.display.update()
+
         for event in pygame.event.get():
             if event.type == pygame.K_RETURN:
                 vid.close()
                 while start.running:
                     start.main()
+
+            if event.type == pygame.QUIT:
+                vid.close()
+                pygame.quit()
+                sys.exit()
 
 
 def play():
@@ -136,6 +135,7 @@ def play():
         pygame.display.update()
 
         intro()
+
 
 def options():
     while True:
@@ -202,10 +202,12 @@ def main_menu():
         pygame.display.update()
 
 
+# Returns Press-Start-2P in the desired size
+def get_font(size):
+    return pygame.font.Font("resources/fonts/font.ttf", size)
 
 
 start = Start()
-
 
 main_menu()
 while start.running:
