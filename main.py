@@ -1,4 +1,5 @@
 import pygame
+from pygame import mixer
 import sys
 import player
 import draw
@@ -7,6 +8,9 @@ from button import Button
 from config import *
 from pyvidplayer import Video
 
+mixer.init()
+mixer.music.load("resources/music/menu_music.mp3")
+mixer.music.play(-1)
 BG = pygame.image.load("images/Background.jpg")
 pygame.display.set_caption("Les Nerds RPG")
 SCREEN = pygame.display.set_mode((800, 608))
@@ -136,8 +140,10 @@ def play():
                     main_menu()
 
         pygame.display.update()
-
+        
+        mixer.music.stop()
         intro()
+
 
 
 def options():
