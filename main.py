@@ -18,11 +18,12 @@ programIcon = pygame.image.load('resources/graphics/icon.png')
 
 pygame.display.set_icon(programIcon)
 
+
 class Start:
     
     def __init__(self):
         pygame.init()
-        self.screen = pygame.display.set_mode((WIN_WIDTH, WIN_HEIGHT))
+        self.screen = SCREEN
         self.clock = pygame.time.Clock()
         self.running = True
         self.playing = True
@@ -143,8 +144,6 @@ def play():
         
         mixer.music.stop()
         intro()
-
-
 
 def options():
     while True:
